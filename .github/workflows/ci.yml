@@ -1,15 +1,30 @@
 name: Run Continuous Integration
 on:
+  push:
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
+
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
       - uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-      - run: mvn --batch-mode verify
+      - run: ./mvnw clean package
+      - uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
