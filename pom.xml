@@ -189,6 +189,18 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>ovea-oss-staging</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>ovea-oss-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
+
     <profiles>
         <profile>
             <id>publication</id>
