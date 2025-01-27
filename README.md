@@ -7,12 +7,4 @@ A TestContainers module to stub Oauth2 Issuer
 
 ## Usage
 
-## 
-
-Used [mkjwk.org](https://mkjwk.org/) to generate
-
-https://mkjwk.org/
-
-
-
-https://codecov.io/gh/Tyro-sc/testcontainers-issuer/graphs/sunburst.svg?token=o5hgZV3fcv
+##
