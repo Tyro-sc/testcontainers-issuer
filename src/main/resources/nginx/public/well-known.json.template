@@ -1,0 +1,4 @@
+{
+  "issuer": "${jwks_uri}",
+  "jwks_uri": "${jwks_uri}/.well-known/jwks.json"
+}
