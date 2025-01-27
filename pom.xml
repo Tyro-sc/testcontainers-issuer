@@ -25,6 +25,8 @@
     <version>0.0.1</version>
     <inceptionYear>2025</inceptionYear>
 
+    <description>Testcontainers Issuer</description>
+
     <properties>
         <project.encoding>UTF-8</project.encoding>
         <java.version>17</java.version>
