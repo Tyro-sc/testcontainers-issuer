@@ -21,7 +21,7 @@
 
     <groupId>sc.tyro</groupId>
     <artifactId>testcontainers-issuer</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <inceptionYear>2025</inceptionYear>
 
     <description>Testcontainers Issuer</description>
