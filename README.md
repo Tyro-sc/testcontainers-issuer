@@ -17,7 +17,7 @@ Add the dependency to your project:
     <artifactId>testcontainers-issuer</artifactId>
     <version>1.0.0</version>
     <scope>test</scope>
-<dependency>
+</dependency>
 ```
 
 # Usage
