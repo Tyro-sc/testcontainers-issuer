@@ -38,8 +38,7 @@ import sc.tyro.testcontainers.issuer.IssuerContainer;
 static IssuerContainer issuer = IssuerContainer.securedDefaults();
 ```
 
-In this case, you need to add the TLS certificate to your truststore
-
+In this case, you need to add the TLS certificate to your truststore.
 ```java
 System.setProperty("javax.net.ssl.trustStore", IssuerContainer.class.getResource("/truststore/cacerts.jks").getFile());
 System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
