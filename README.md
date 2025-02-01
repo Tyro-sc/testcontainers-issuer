@@ -111,8 +111,7 @@ class JwtTest {
     @Test
     void invalidScope() {
         LocalDateTime now = LocalDateTime.now(ZoneId.systemDefault());
-        LocalDateTime expiration = now().plusMinutes(10);
-
+        LocalDateTime expiration = LocalDateTime.now().plusMinutes(10);
         TokenForgery tokenForgery = issuerContainer.forgery();
         tokenForgery
             .withAudience("audience")
