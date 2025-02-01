@@ -105,7 +105,7 @@ class JwtTest {
 
     @DynamicPropertySource
     static void auth(DynamicPropertyRegistry registry) {
-        registry.add("spring.security.oauth2.resourceserver.jwt.issuer-uri", userIssuer::url);
+        registry.add("spring.security.oauth2.resourceserver.jwt.issuer-uri", issuerContainer::url);
     }
 
     @Test
