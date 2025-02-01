@@ -51,8 +51,7 @@ Now you have a Docker container exposing the issuer URL.
 URL url = issuer.url();
 ```
 
-The public key is available at the `isser.url() + ".well-known/jwks.json"` endpoint.
-
+The public key is available at the `issuer.url() + ".well-known/jwks.json"` endpoint.
 ```bash
 curl http://localhost:32773/default/.well-known/jwks.json
 {
