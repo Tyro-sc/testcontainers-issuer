@@ -72,7 +72,7 @@ curl http://localhost:32773/default/.well-known/jwks.json
 We also provide the URL of the standard openId configuration endpoint (.well-known/openid-configuration).
 
 ```bash
-curl http://localhost:32773/default/.well-known/openid-configurationn
+curl http://localhost:32773/default/.well-known/openid-configuration
 {
   "issuer": "http://localhost:32773/default",
   "jwks_uri": "http://localhost:32773/default/.well-known/jwks.json"
