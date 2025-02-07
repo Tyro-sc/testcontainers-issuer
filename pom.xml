@@ -21,10 +21,11 @@
 
     <groupId>sc.tyro</groupId>
     <artifactId>testcontainers-issuer</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <inceptionYear>2025</inceptionYear>
 
-    <description>Testcontainers Issuer</description>
+    <name>Testcontainers Issuer</name>
+    <description>Testcontainers Module to simulate JWT Issuer</description>
     <url>https://github.com/Tyro-sc/testcontainers-issuer</url>
 
     <properties>
