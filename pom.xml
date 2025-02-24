@@ -34,7 +34,7 @@
 
         <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
 
-        <testcontainers.version>1.20.4</testcontainers.version>
+        <testcontainers.version>1.20.5</testcontainers.version>
         <java-jwt.version>4.5.0</java-jwt.version>
         <jwks-rsa.version>0.22.1</jwks-rsa.version>
         <jackson-annotations.version>2.18.2</jackson-annotations.version>
