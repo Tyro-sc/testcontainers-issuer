@@ -75,7 +75,6 @@ curl http://localhost:32773/default/.well-known/openid-configuration
   "issuer": "http://localhost:32773/default",
   "jwks_uri": "http://localhost:32773/default/.well-known/jwks.json"
 } 
-
 ```
 
 You can now forge a token.
@@ -119,6 +118,7 @@ class JwtTest {
             .withSubject("subject")
             .withArrayClaim("scp", "SCOPE_1", "SCOPE_2")
             .withClaim("cid", "client_id")
+            .withClaim("resource_access", Map.of("client_id", Map.of("roles", List.of("user", "admin"))))    
             .expiresAt(expiration)
             .issuedAt(now)
             .notBefore(now);

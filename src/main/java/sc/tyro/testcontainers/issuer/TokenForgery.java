@@ -71,6 +71,11 @@ public class TokenForgery {
         return this;
     }
 
+    public TokenForgery withClaim(String name, Map<String, ?> value) {
+        jwtCreator.withClaim(name, value);
+        return this;
+    }
+
     public TokenForgery expiresAt(LocalDateTime expirationTime) {
         jwtCreator.withExpiresAt(from(expirationTime.atZone(ZoneId.systemDefault()).toInstant()));
         return this;

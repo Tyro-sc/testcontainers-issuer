@@ -32,6 +32,8 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import static com.auth0.jwt.algorithms.Algorithm.RSA256;
 import static java.time.LocalDateTime.now;
@@ -69,6 +71,7 @@ class TokenForgeryTest {
                 .withArrayClaim("scp", "scope::1", "scope::2")
                 .withClaim("cid", "client_id")
                 .withClaim("pid", "principal_id")
+                .withClaim("resource_access", Map.of("client_id", Map.of("roles", List.of("user", "admin"))))
                 .expiresAt(expirationTime)
                 .issuedAt(now)
                 .notBefore(now);
@@ -90,7 +93,12 @@ class TokenForgeryTest {
         assertThat(jwt.getClaim("cid").asString(), is("client_id"));
         assertThat(jwt.getClaim("pid").asString(), is("principal_id"));
         assertThat(jwt.getClaim("scp").asList(String.class), contains("scope::1", "scope::2"));
-        assertThat(jwt.getClaims().size(), is(10));
+
+        assertThat(jwt.getClaim("resource_access").asMap(), hasKey("client_id"));
+        List<String> roles = (List<String>) ((Map<?, ?>)jwt.getClaim("resource_access").asMap().get("client_id")).get("roles");
+        assertThat(roles, hasItems("user", "admin"));
+
+        assertThat(jwt.getClaims().size(), is(11));
     }
 
     private static Date convert(LocalDateTime localDateTime) {

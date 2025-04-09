@@ -1,4 +1,7 @@
 {
   "issuer": "${jwks_uri}",
-  "jwks_uri": "${jwks_uri}/.well-known/jwks.json"
+  "jwks_uri": "${jwks_uri}/.well-known/jwks.json",
+  "subject_types_supported": ["public", "pairwise"],
+  "token_endpoint": "${jwks_uri}/connect/token",
+  "authorization_endpoint": "${jwks_uri}/connect/authorize"
 }
