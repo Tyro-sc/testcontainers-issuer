@@ -42,7 +42,7 @@
         <!-- Tests -->
         <junit.jupiter.version>5.12.1</junit.jupiter.version>
         <hamcrest.version>3.0</hamcrest.version>
-        <rest-assured.version>5.5.0</rest-assured.version>
+        <rest-assured.version>5.5.1</rest-assured.version>
         <commons-io.version>2.18.0</commons-io.version>
 
         <!-- Maven plugins -->
