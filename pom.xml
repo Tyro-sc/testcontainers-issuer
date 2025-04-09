@@ -21,7 +21,7 @@
 
     <groupId>sc.tyro</groupId>
     <artifactId>testcontainers-issuer</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.1.0</version>
     <inceptionYear>2025</inceptionYear>
 
     <name>Testcontainers Issuer</name>
@@ -59,7 +59,7 @@
         <connection>scm:git:https://github.com/Tyro-sc/testcontainers-issuer.git</connection>
         <developerConnection>scm:git:https://github.com/Tyro-sc/testcontainers-issuer.git</developerConnection>
         <url>https://github.com/Tyro-sc/testcontainers-issuer</url>
-        <tag>v1.0.0</tag>
+        <tag>v1.1.0</tag>
     </scm>
 
     <licenses>
@@ -221,20 +221,20 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>${maven-gpg-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-gpg-plugin</artifactId>-->
+<!--                <version>${maven-gpg-plugin.version}</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>sign-artifacts</id>-->
+<!--                        <phase>verify</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>sign</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
