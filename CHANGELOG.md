@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/Tyro-sc/testcontainers-issuer/compare/v1.1.1...v1.2.0) (2025-07-12)
+
+
+### Features
+
+* Change Publish method ([#28](https://github.com/Tyro-sc/testcontainers-issuer/issues/28)) ([6801db2](https://github.com/Tyro-sc/testcontainers-issuer/commit/6801db20bf24756cfdc3e2d582914f99857f1421))
+
 ## [1.1.1](https://github.com/Tyro-sc/testcontainers-issuer/compare/v1.1.0...v1.1.1) (2025-07-11)
 
 
