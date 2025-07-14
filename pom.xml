@@ -37,7 +37,7 @@
         <testcontainers.version>1.20.6</testcontainers.version>
         <java-jwt.version>4.5.0</java-jwt.version>
         <jwks-rsa.version>0.22.1</jwks-rsa.version>
-        <jackson-annotations.version>2.18.3</jackson-annotations.version>
+        <jackson-annotations.version>2.19.1</jackson-annotations.version>
 
         <!-- Tests -->
         <junit.jupiter.version>5.13.3</junit.jupiter.version>
