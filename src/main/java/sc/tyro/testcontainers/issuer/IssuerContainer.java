@@ -34,8 +34,16 @@ public class IssuerContainer extends GenericContainer<IssuerContainer> {
         return new IssuerContainer("default", DEFAULT_IMAGE_NAME.withTag(DEFAULT_TAG), false);
     }
 
+    public static IssuerContainer withFixedHttpPort(int fixedHttpPort) {
+        return new IssuerContainer("default", DEFAULT_IMAGE_NAME.withTag(DEFAULT_TAG), false, fixedHttpPort, -1);
+    }
+
     public static IssuerContainer securedDefaults() {
         return new IssuerContainer("default", DEFAULT_IMAGE_NAME.withTag(DEFAULT_TAG), true);
+    }
+
+    public static IssuerContainer securedWithFixedHttpsPort(int fixedHttpsPort) {
+        return new IssuerContainer("default", DEFAULT_IMAGE_NAME.withTag(DEFAULT_TAG), true, -1, fixedHttpsPort);
     }
 
     public IssuerContainer(String custom, boolean secured) {
@@ -43,21 +51,33 @@ public class IssuerContainer extends GenericContainer<IssuerContainer> {
     }
 
     public IssuerContainer(String name, DockerImageName dockerImageName, boolean secured) {
+        this(name, dockerImageName, secured, -1, -1);
+    }
+
+    public IssuerContainer(String name, DockerImageName dockerImageName, boolean secured, int fixedExposedHttpPort, int fixedExposedHttpsPort) {
         super(dockerImageName);
         this.name = name;
         this.secured = secured;
         dockerImageName.assertCompatibleWith(DEFAULT_IMAGE_NAME);
-        addExposedPort(HTTP_PORT);
-        addExposedPort(HTTPS_PORT);
+        if (fixedExposedHttpPort > 1024) {
+            addFixedExposedPort(fixedExposedHttpPort, HTTP_PORT);
+        } else {
+            addExposedPort(HTTP_PORT);
+        }
+        if (fixedExposedHttpsPort > 1024) {
+            addFixedExposedPort(fixedExposedHttpsPort, HTTPS_PORT);
+        } else {
+            addExposedPort(HTTPS_PORT);
+        }
     }
 
     @Override
     public void start() {
         super.start();
-        var jwksUri = "http://" + getHost() + ":" + getMappedPort(HTTP_PORT) + "/" + name;
+        var jwksUri = "http://" + host() + ":" + getMappedPort(HTTP_PORT) + "/" + name;
 
         if (secured)
-            jwksUri = "https://" + getHost() + ":" + getMappedPort(HTTPS_PORT) + "/" + name;
+            jwksUri = "https://" + host() + ":" + getMappedPort(HTTPS_PORT) + "/" + name;
 
         try {
             execInContainer("sh", "-c", "export jwks_uri=" + jwksUri + " && /docker-entrypoint.d/start.sh");
@@ -81,11 +101,20 @@ public class IssuerContainer extends GenericContainer<IssuerContainer> {
     }
 
     public String url() {
+
         if (secured) {
-            return "https://" + getHost() + ":" + getMappedPort(443) + "/" + name;
+            return "https://" + host() + ":" + getMappedPort(443) + "/" + name;
         } else {
-            return "http://" + getHost() + ":" + getMappedPort(80) + "/" + name;
+            return "http://" + host() + ":" + getMappedPort(80) + "/" + name;
         }
+    }
+
+    private String host() {
+        var host = getHost();
+        if ("127.0.0.1".equals(host)) {
+            host = "localhost";
+        }
+        return host;
     }
 
     public TokenForgery forgery() {
