@@ -37,6 +37,12 @@ class IssuerContainerTest {
     @Container
     private static final IssuerContainer customIssuerContainer = new IssuerContainer("custom", true);
 
+    @Container
+    private static final IssuerContainer fixedHttpPortIssuerContainer = IssuerContainer.withFixedHttpPort(32323);
+
+    @Container
+    private static final IssuerContainer fixedHttpsPortIssuerContainer = IssuerContainer.securedWithFixedHttpsPort(32433);
+
     @BeforeAll
     static void beforeAll() {
         // Set TLS certificates
@@ -58,6 +64,15 @@ class IssuerContainerTest {
         // custom
         url = "https://localhost:" + customIssuerContainer.getMappedPort(443) + "/" + customIssuerContainer.name();
         assertThat(customIssuerContainer.url(), is(url));
+
+        // fixed http port
+        url = "http://localhost:32323/" + fixedHttpPortIssuerContainer.name();
+        assertThat(fixedHttpPortIssuerContainer.url(), is(url));
+
+        // fixed https port
+        url = "https://localhost:32433/" + fixedHttpsPortIssuerContainer.name();
+        assertThat(fixedHttpsPortIssuerContainer.url(), is(url));
+
     }
 
     @Test
